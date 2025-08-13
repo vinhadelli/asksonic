@@ -10,8 +10,12 @@ from asksonic.utils.response import empty_response, enqueue_track_response, \
 @ask.on_playback_started()
 def playback_started() -> tuple:
     log('Playback Started')
-    if queue.current:
-        queue.current.scrobble(submission=False, timestamp=queue.start_time)
+    # this will exception out if LAST FM isn't setup on sonic api
+    try:
+        if queue.current:
+            queue.current.scrobble(submission=False, timestamp=queue.start_time)
+    except:
+        pass
     return empty_response
 
 
@@ -40,8 +44,11 @@ def playback_nearly_finished() -> Union[audio, tuple]:
 @ask.on_playback_finished()
 def playback_finished() -> tuple:
     log('Playback Finished')
-    if queue.current:
-        queue.current.scrobble(submission=True, timestamp=queue.start_time)
+    try:
+        if queue.current:
+            queue.current.scrobble(submission=True, timestamp=queue.start_time)
+    except:
+        pass
     queue.next()
     return empty_response
 

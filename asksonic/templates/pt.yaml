@@ -1,0 +1,30 @@
+launch_text: "Bem vindo ao Ask Sonic. Me peça para tocar um artista, álbum, ou música. Você pode pedir também para tocar uma playlist ou a biblioteca de música completa."
+launch_title: "Bem vindo ao AskSonic!"
+launch_content: "Me peça para tocar um artista, álbum, ou música. Você pode pedir também para tocar uma playlist ou a biblioteca de música completa."
+
+pausing: "Pausando"
+resuming: "Resumindo"
+stopping: "Parando"
+okay: "Okay"
+
+playlist_not_found: "Playlist não encontrada {{ playlist }}"
+playing_library: "Tocando músicas da sua biblioteca"
+playing_artist: "Tocando músicas do {{ artist }}"
+playing_album: "Tocando álbum {{ album }} {{ 'por {}'.format(artist) if artist }}"
+
+current_track: "Essa música é "
+track_information: "{{ title }} por {{ artist }}"
+detailed_track_information: "{{ title }} por {{ artist }} do álbum {{ album }}"
+
+artist_albums: "Eu encontrei esses álbuns por {{ artist }}: {{ album_titles }}"
+
+intent_not_supported: "Desculpe, eu não posso fazer isso ainda"
+nothing_playing: "Não tem músicas tocando"
+no_previous_track: "Não há música anterior"
+end_of_queue: "Não há mais músicas na fila"
+artist_not_found: "Eu não pude encontrar o artista {{ artist }}"
+album_not_found: "Eu não pude encontrar o álbum {{ album }} {{ 'por {}'.format(artist) if artist }}"
+
+help_text: "Me peça para tocar um artista, álbum, ou música. Você pode pedir também para tocar uma playlist ou a biblioteca de música completa."
+help_title: "Menu de ajuda"
+help_content: "Me peça para tocar um artista, álbum, ou música. Você pode pedir também para tocar uma playlist ou a biblioteca de música completa."
