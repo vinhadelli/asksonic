@@ -1,13 +1,16 @@
-﻿FROM python:3.9-slim-buster AS builder
-RUN apt update && apt install git gcc libssl-dev -y
-WORKDIR /asksonic
-RUN git clone https://github.com/BlinkersFr31/asksonic.git
-RUN pip install --user wheel setuptools honcho
-RUN pip install --user -r asksonic/requirements.txt
+﻿FROM python:3.9-alpine
 
-FROM python:3.9-slim-buster
-COPY --from=builder /asksonic /opt
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
-WORKDIR /opt/asksonic
-ENTRYPOINT ["honcho", "start", "-f", "Procfile.dev"]
+ADD ./asksonic /app
+ADD ./.env /app
+
+WORKDIR /app
+RUN apk add --update gcc libc-dev libffi-dev openssl-dev git nodejs npm
+RUN pip3 install --upgrade pip
+RUN pip3 install -r ./requirements.txt
+RUN npm install -g foreman
+
+ENV PYTHONPATH=/usr/local/lib/python3.5/site-packages
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
+CMD ["nf", "start"]
